@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "NODE_ENV=production ./node_modules/.bin/webpack && node server.js"
+    "start": "NODE_ENV=production npm run build && node server.js"
   },
   "dependencies": {
     "bootstrap-vue": "^2.0.0-rc.11",
