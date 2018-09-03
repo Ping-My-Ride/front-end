@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import LandingPage from './views/LandingPage.vue'
 import DriverForm from './views/DriverForm.vue'
+import RiderForm from './views/RiderForm.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -17,6 +18,11 @@ export default new Router({
       path: '/driver',
       name: 'driver',
       component: DriverForm
+    },
+    {
+      path: '/rider',
+      name: 'rider',
+      component: RiderForm
     },
   ]
 })

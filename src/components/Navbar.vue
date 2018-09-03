@@ -5,6 +5,7 @@
 
         <b-navbar-brand to="/">
             <font-awesome-icon icon="car-side" />
+            <span> Ping My Ride!</span>
         </b-navbar-brand>
         
         <b-collapse is-nav id="nav_collapse">
