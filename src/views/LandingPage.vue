@@ -9,6 +9,7 @@
             </div>
 
             <div class="form-group">
+                <label for="">Password</label>
                 <input type="password" class="form-control">
             </div>
         </div>
@@ -18,16 +19,16 @@
                 Login
             </button>
             <button class="btn button btn-primary">
-                Signin
+                Create Account
             </button>
         </div>
         <div class="button-group" v-if="userName">
             <b-btn class="button" variant="primary" to="/rider">
-                <span>I'm a Rider! </span> 
+                <span>I'm a Rider! </span>
                 <font-awesome-icon icon="car-side" />
             </b-btn>
             <b-btn class="button" variant="primary" to="/driver">
-                <span>I'm a Driver! </span> 
+                <span>I'm a Driver! </span>
                 <font-awesome-icon icon="car-side" />
             </b-btn>
         </div>
