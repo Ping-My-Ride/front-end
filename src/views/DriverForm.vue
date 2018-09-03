@@ -1,9 +1,13 @@
 <template>
     <div class="container driver-form">
-
+        <h1>I'm a Driver!</h1>
+        <p>
+          Please set the route you follow everyday to the office clicking on the map and setting the way using points,
+          when you reach the last point doble click on the same place to set the last point
+        </p>
         <div class="form-group row">
             <label for="" class="col-md-3">Route name</label>
-            <input v-model="route" type="text" class="form-control col-md-9">
+            <input v-model="routeName" type="text" class="form-control col-md-9">
         </div>
 
         <div class="form-group row">
@@ -132,10 +136,11 @@ export default {
       return false;
     },
     saveRoute() {
-        axios.post("https://stormy-forest-77656.herokuapp.com/routes/").then(res=>{})
+      axios
+        .post("https://stormy-forest-77656.herokuapp.com/routes/")
+        .then(res => {});
     },
     runSnapToRoad(path) {
-      debugger;
       var pathValues = [];
       for (var i = 0; i < path.getLength(); i++) {
         pathValues.push(path.getAt(i).toUrlValue());
