@@ -14,19 +14,19 @@
                 :zoom = "18"
                 style="width: 500px; height: 300px"
             >
-                <GmapMarker
-                    :position="location"
-                    :clickable="true"
-                    :draggable="true"
-                    @click="center=location"
-                />
+              <GmapMarker
+                  :position="location"
+                  :clickable="true"
+                  :draggable="true"
+                  @click="center=location"
+              />
             </GmapMap>
         </div>
         <div class="form-group">
             <input type="text" id="autoc" class="form-control">
         </div>
         <div class="form-group">
-            <button class="btn btn-success" @click = "sendPosition()">Save route</button>
+            <button class="btn btn-success" @click = "sendPosition()">Search routes</button>
         </div>
     </div>
 </template>
@@ -50,6 +50,21 @@ export default {
         map.setCenter(pos);
         this.setMarkerLocation(pos);
       });
+
+      var autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById("autoc")
+      );
+      autocomplete.bindTo("bounds", map);
+      autocomplete.addListener("place_changed", () => {
+        var place = autocomplete.getPlace();
+        if (place.geometry.viewport) {
+          map.fitBounds(place.geometry.viewport);
+        } else {
+          map.setCenter(place.geometry.location);
+          map.setZoom(13);
+        }
+        this.location = place.geometry.location;
+      });
     });
   },
   computed: mapState({
@@ -60,16 +75,25 @@ export default {
       this.location = pos;
     },
     sendPosition() {
-      axios.get(
-        `https://stormy-forest-77656.herokuapp.com/${this.userName}/drivers`,
-        {
-          params: {
-            lat: this.location.lat,
-            lng: this.location.lng
+      axios
+        .get(
+          `https://stormy-forest-77656.herokuapp.com/${this.userName}/drivers`,
+          {
+            params: {
+              lat: this.location.lat,
+              lng: this.location.lng
+            }
           }
-        }
-      );
-    }
+        )
+        .then(res => {
+          this.setRoutes(res.data.map(item => {
+            debugger
+            item.route
+          }));
+          this.$router.push("available-routes");
+        });
+    },
+    ...mapActions(["setRoutes"])
   }
 };
 </script>

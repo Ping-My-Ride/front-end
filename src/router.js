@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import LandingPage from './views/LandingPage.vue'
 import DriverForm from './views/DriverForm.vue'
 import RiderForm from './views/RiderForm.vue'
+import AvailableRoutes from './views/AvailableRoutes.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -23,6 +24,11 @@ export default new Router({
       path: '/rider',
       name: 'rider',
       component: RiderForm
+    },
+    {
+      path: '/available-routes',
+      name: 'available-routes',
+      component: AvailableRoutes
     },
   ]
 })

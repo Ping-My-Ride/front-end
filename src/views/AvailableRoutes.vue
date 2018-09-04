@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h1>
             Posible drivers!
         </h1>
@@ -32,6 +32,7 @@
                         :zoom = "18"
                         style="width: 500px; height: 300px"
                     >
+                        </GmapMap>
                     </td>
                 </tr>
             </tbody>
@@ -39,3 +40,42 @@
     </div>
 
 </template>
+
+<script>
+import { mapState, mapActions } from "vuex";
+
+export default {
+  computed: mapState({
+    userName: "userName",
+    routes: "routes"
+  })
+};
+</script>
+
+
+<style lang="scss" scoped>
+table {
+    border: solid 1px #ddeeee;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+    thead { 
+        th {
+            background-color: #ddefef;
+            border: solid 1px #ddeeee;
+            color: #336b6b;
+            padding: 10px;
+            text-align: left;
+            text-shadow: 1px 1px 1px #fff;
+        }
+    }
+    tbody {
+        td {
+            border: solid 1px #ddeeee;
+            color: #333;
+            padding: 10px;
+            text-shadow: 1px 1px 1px #fff;
+        }
+    }
+}
+</style>

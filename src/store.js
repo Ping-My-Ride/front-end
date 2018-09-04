@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userName: ''
+    userName: '',
+    routes: []
   },
   mutations: {
     login(state, userName) {
@@ -13,6 +14,9 @@ export default new Vuex.Store({
     },
     logout(state) {
       state.userName = "";
+    },
+    setRoutes(state, routes) {
+      state.routes + routes;
     }
   },
   actions: {
@@ -21,6 +25,9 @@ export default new Vuex.Store({
     },
     logout(context) {
       context.commit('logout')
+    },
+    setRoutes(context, routes) {
+      context.commit('setRoutes', routes)
     }
   }
 })
